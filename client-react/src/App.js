@@ -18,7 +18,7 @@ function App() {
           Learn React
         </a>
         <p>
-          TEST PIPELINE
+          ANOTHER TEST PIPELINE
         </p>
       </header>
     </div>
