@@ -23,6 +23,9 @@ function App() {
         <p>
           HEROKU MAGIC
         </p>
+        <p>
+          HELLO WORLD PROFE
+        </p>
       </header>
     </div>
   );
