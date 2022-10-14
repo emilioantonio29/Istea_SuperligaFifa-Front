@@ -20,6 +20,9 @@ function App() {
         <p>
           ANOTHER TEST PIPELINE
         </p>
+        <p>
+          HEROKU MAGIC
+        </p>
       </header>
     </div>
   );
