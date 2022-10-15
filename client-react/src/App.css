@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+/* GENERAL STYLE SETTINGS */
+
+.link-noStyle{
+  /* background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  color: color.$color-HB-blue-strong;; */
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+  color: rgb(42, 42, 113)
+}
+
+.link-noStyle:hover {
+  text-decoration: none;
+  color: rgb(6, 6, 48);
+  font-weight: 500;
+}

@@ -1,0 +1,10 @@
+.input-login{
+    width: 400px;
+}
+
+@media only screen and (max-width: 600px){
+
+    .input-login{
+        width: 250px;
+    }
+}
