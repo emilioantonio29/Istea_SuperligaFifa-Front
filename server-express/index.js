@@ -14,7 +14,8 @@ app.use(express.urlencoded({extended: true}))
 app.get('/test', function(req, res) {
   res.json({
     project: "Proyecto ISTEA: Integracion de Sistemas",
-    test: "change app name"
+    test: "change app name",
+    test: "change repository name",
   });
 });
 
