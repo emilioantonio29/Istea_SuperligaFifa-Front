@@ -11,8 +11,11 @@ app.use(express.urlencoded({extended: true}))
 
 
 // ROUTES
-app.get('/front', function(req, res) {
-  res.send('Proyecto integracion de sistemas');
+app.get('/test', function(req, res) {
+  res.json({
+    project: "Proyecto ISTEA: Integracion de Sistemas",
+    test: "change app name"
+  });
 });
 
 // FRONT
