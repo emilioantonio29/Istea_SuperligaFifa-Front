@@ -32,9 +32,9 @@ const LoginContainer = () => {
 
                 console.log(res)
 
-                if(res.status == 200 && res.data.user){
+                if(res && res.status && res.status == 200 && res.data.user){
                     setUser(res.data.user);
-                }else if(res.response && res.response.status == 404){
+                }else if(res.response && res.response.status && res.response.status == 404){
                     setErrorMsg("• El usuario o la contraseña son incorrectos.")
                 }else{
                     setErrorMsg("• Detectamos un error en el inicio de sesión. Por favor intenta nuevamente en breves minutos.")
