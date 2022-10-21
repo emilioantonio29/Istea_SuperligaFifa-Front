@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let environment = process.env.NODE_ENV == "development" ? process.env.REACT_APP_LOCALAPI : REACT_APP_API;
+let environment = process.env.NODE_ENV == "development" ? process.env.REACT_APP_LOCALAPI : process.env.REACT_APP_API;
 
 export const generalAxios = async (method, endpoint, headers, body) => {
     try {
