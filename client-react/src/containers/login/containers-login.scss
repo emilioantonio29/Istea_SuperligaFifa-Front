@@ -1,0 +1,27 @@
+.input-login{
+    width: 400px;
+}
+
+.input-submit{
+    background-color: rgb(184, 140, 184);
+    border: 0px solid;
+}
+
+.input-submit:hover{
+    background-color: rgb(100, 50, 100);
+    border: 0px solid;
+}
+
+@media only screen and (max-width: 1600px){
+
+    .input-login{
+        width: 280px;
+    }
+}
+
+@media only screen and (max-width: 800px){
+
+    .input-login{
+        width: 250px;
+    }
+}

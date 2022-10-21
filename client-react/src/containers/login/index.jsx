@@ -1,9 +1,10 @@
 import React, {useState, useContext} from "react";
 import { emailValidator } from "../../utils/hooks/email-validator";
-import './components-login.scss';
+import './containers-login.scss';
 import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 import CommonSpacer from "../../components/common/spacer";
 import { Link } from "react-router-dom";
+import { login } from "../../utils/hooks/general-axios";
 
 const LoginContainer = () => {
 
@@ -14,20 +15,34 @@ const LoginContainer = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = (event) =>{
+    const handleLogin = async (event) =>{
         event.preventDefault();
         setErrorMsg("");
 
         if(!email || !password){
-            setErrorMsg("* Por favor ingresa usuario y contraseña para iniciar sesión.")
+            setErrorMsg("• Por favor ingresa usuario y contraseña para iniciar sesión.")
         }else{
             if(emailValidator(email)){
-                setErrorMsg("* Por favor ingresa un formato de email valido")
+                setErrorMsg("• Por favor ingresa un formato de email valido")
             }else{
+
                 setLoader(true);
-                setTimeout(() => {
-                    setUser({email:email, name: "test", admin:false});
-                }, 2000);
+
+                let res = await login(email, password);
+
+                console.log(res)
+
+                if(res.status == 200 && res.data.user){
+                    setUser(res.data.user);
+                }else if(res.response && res.response.status == 404){
+                    setErrorMsg("• El usuario o la contraseña son incorrectos.")
+                }else{
+                    setErrorMsg("• Detectamos un error en el inicio de sesión. Por favor intenta nuevamente en breves minutos.")
+                }
+
+                setLoader(false);
+
+
             }
         }
     }
@@ -66,7 +81,7 @@ const LoginContainer = () => {
                         : 
                         <>
                             <div className="form-group form-group-login d-flex justify-content-center">
-                                <input type="submit" className="btn btn-primary input-login" value="Continuar"/>
+                                <input type="submit" className="btn btn-primary input-login input-submit" value="Continuar"/>
                             </div>
                         </>
                         }
@@ -76,7 +91,7 @@ const LoginContainer = () => {
                 </div>
                 <div className="input-login">
                     <CommonSpacer marginBottom="20px"/>
-                    <p style={{color: "red"}}>{errorMsg}</p>
+                    <p style={{color: "red", textAlign:"center"}}>{errorMsg}</p>
                 </div>
             </div>
         </>

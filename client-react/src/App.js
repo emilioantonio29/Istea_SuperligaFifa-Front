@@ -17,6 +17,8 @@ const App = () => {
 
   const {user} = useContext(UserGlobalContextMemorySpace);
 
+  console.log(process.env.NODE_ENV)
+
   useEffect(()=>{
 
     //Mount:  
