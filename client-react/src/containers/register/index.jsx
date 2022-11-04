@@ -1,15 +1,13 @@
 import React, {useState, useContext} from "react";
 import { emailValidator, nameValidator, spaceValidator } from "../../utils/hooks/regex-validator";
 import './containers-register.scss';
-import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 import CommonSpacer from "../../components/common/spacer";
 import { Link } from "react-router-dom";
 import { register } from "../../utils/hooks/general-axios";
 import Swal from "sweetalert2";
+import Overlay from "../../components/overlay";
 
 const RegisterContainer = () => {
-
-    const {user, setUser} = useContext(UserGlobalContextMemorySpace);
 
     const [loader, setLoader] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
@@ -40,7 +38,7 @@ const RegisterContainer = () => {
 
                 setLoader(true);
 
-                let res = await register(email, name, lastName, favoriteTeam, termsAndConditions);
+                let res = await register(email, favoriteTeam, lastName, name, termsAndConditions);
 
                 if(res && res.status == 200){
                     setLoader(false);
@@ -80,6 +78,8 @@ const RegisterContainer = () => {
 
     return (  
         <>
+            {loader ? <Overlay/> : null}
+
             <div className="d-flex flex-column">
                 <div className="d-flex flex-column">
                     <form className="d-flex flex-column justify-content-center form-login" onSubmit={handleRegister}>

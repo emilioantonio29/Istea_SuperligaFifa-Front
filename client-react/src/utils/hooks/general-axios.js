@@ -64,3 +64,27 @@ export const register = async (username, favoriteteam, lastname, name, tac) => {
     }
 
 }
+
+export const registerConfirmation = async (id, email, password) => {
+
+    let body = {
+        "id": id,
+        "email": email, 
+        "password": password
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_USERCONFIRMATION,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

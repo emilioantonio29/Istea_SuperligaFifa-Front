@@ -5,6 +5,7 @@ import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 import CommonSpacer from "../../components/common/spacer";
 import { Link } from "react-router-dom";
 import { login } from "../../utils/hooks/general-axios";
+import Overlay from "../../components/overlay";
 
 const LoginContainer = () => {
 
@@ -34,6 +35,8 @@ const LoginContainer = () => {
                     setUser(res.data.user);
                 }else if(res.response && res.response.status && res.response.status == 404){
                     setErrorMsg("• El usuario o la contraseña son incorrectos.")
+                }else if(res.response && res.response.status && res.response.status == 401){
+                    setErrorMsg("• El usuario no se ha validado. Por favor revisa tu casilla de mail.")
                 }else{
                     setErrorMsg("• Detectamos un error en el inicio de sesión. Por favor intenta nuevamente en breves minutos.")
                 }
@@ -47,6 +50,9 @@ const LoginContainer = () => {
 
     return (  
         <>
+
+            {loader? <Overlay/> : null}
+            
             <div className="d-flex flex-column">
                 <div className="d-flex flex-column">
                     <form className="d-flex flex-column justify-content-center form-login" onSubmit={handleLogin}>
