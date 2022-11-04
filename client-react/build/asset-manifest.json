@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.b21eb39b.js",
+    "main.css": "/static/css/main.a5f36e88.css",
+    "main.js": "/static/js/main.2decce23.js",
     "static/js/787.835d6ae4.chunk.js": "/static/js/787.835d6ae4.chunk.js",
+    "static/media/neymar.jpg": "/static/media/neymar.9c774dff6706e39af265.jpg",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
+    "static/media/neymar2.jpg": "/static/media/neymar2.237a1ea07fe83ba8f30a.jpg",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.b21eb39b.js.map": "/static/js/main.b21eb39b.js.map",
+    "main.a5f36e88.css.map": "/static/css/main.a5f36e88.css.map",
+    "main.2decce23.js.map": "/static/js/main.2decce23.js.map",
     "787.835d6ae4.chunk.js.map": "/static/js/787.835d6ae4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.b21eb39b.js"
+    "static/css/main.a5f36e88.css",
+    "static/js/main.2decce23.js"
   ]
 }
