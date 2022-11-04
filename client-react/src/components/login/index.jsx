@@ -24,6 +24,8 @@ const LoginComponent = () => {
                                 <h3>Superliga FIFA</h3>
                             </div>
                             <CommonSpacer marginBottom="20px"/>
+                            <p style={{textAlign: "center"}}>Inicio de sesión</p>
+                            <CommonSpacer marginBottom="20px"/>
                             <div className="d-flex justify-content-center">
                                 <LoginContainer/>
                             </div>

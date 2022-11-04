@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { emailValidator } from "../../utils/hooks/email-validator";
+import { emailValidator, nameValidator, spaceValidator } from "../../utils/hooks/regex-validator";
 import './containers-login.scss';
 import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 import CommonSpacer from "../../components/common/spacer";
@@ -30,8 +30,6 @@ const LoginContainer = () => {
 
                 let res = await login(email, password);
 
-                console.log(res)
-
                 if(res && res.status && res.status == 200 && res.data.user){
                     setUser(res.data.user);
                 }else if(res.response && res.response.status && res.response.status == 404){
@@ -57,7 +55,7 @@ const LoginContainer = () => {
                                 onChange={(e)=> setEmail(e.target.value)} value={email}
                                 type="text" 
                                 className="form-control input-login" 
-                                placeholder="superliga@juega.com"/>
+                                placeholder="Email"/>
                         </div>
                         <CommonSpacer marginBottom="20px"/>
                         <div className="form-group form-group-login d-flex justify-content-center">
@@ -65,7 +63,7 @@ const LoginContainer = () => {
                                 onChange={(e)=> setPassword(e.target.value)} value={password}
                                 type="password" 
                                 className="form-control input-login" 
-                                placeholder="123456789"/>
+                                placeholder="Contraseña"/>
                         </div>
                         <CommonSpacer marginBottom="20px"/>
                         <Link to={'/password-recovery'} className='link-noStyle' style={{textAlign: "center"}}>¿Olvidaste tu contraseña?</Link>
@@ -91,7 +89,7 @@ const LoginContainer = () => {
                 </div>
                 <div className="input-login">
                     <CommonSpacer marginBottom="20px"/>
-                    <p style={{color: "red", textAlign:"center"}}>{errorMsg}</p>
+                    <p style={{color: "#B88CB8", textAlign:"center"}}>{errorMsg}</p>
                 </div>
             </div>
         </>

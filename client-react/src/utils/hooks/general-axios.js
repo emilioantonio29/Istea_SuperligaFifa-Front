@@ -38,3 +38,29 @@ export const login = async (username, password) => {
     }
 
 }
+
+export const register = async (username, favoriteteam, lastname, name, tac) => {
+
+    let body = {
+        "username": username,
+        "favoriteteam": favoriteteam, 
+        "lastname": lastname,
+        "name": name,
+        "tac": tac
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_CREATEUSER,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
