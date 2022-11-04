@@ -72,7 +72,7 @@ const LoginContainer = () => {
                                 placeholder="Contraseña"/>
                         </div>
                         <CommonSpacer marginBottom="20px"/>
-                        <Link to={'/password-recovery'} className='link-noStyle' style={{textAlign: "center"}}>¿Olvidaste tu contraseña?</Link>
+                        <Link to={'/passwordrecovery'} className='link-noStyle' style={{textAlign: "center"}}>¿Olvidaste tu contraseña?</Link>
                         <CommonSpacer marginBottom="20px"/>
                         {loader ? 
                         <>

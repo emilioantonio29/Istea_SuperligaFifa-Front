@@ -110,3 +110,27 @@ export const passwordRecovery = async (email) => {
     }
 
 }
+
+export const passwordRecoveryConfirmation = async (username, token, password) => {
+
+    let body = {
+        "username": username,
+        "token": token,
+        "password": password
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_PASSWORDRECOVERYCONFIRMATION,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

@@ -25,8 +25,6 @@ const PasswordRecoveryContainer = () => {
 
             let res = await passwordRecovery(email);
 
-            console.log(res)
-
             if(res && res.data && res.data.passwordRecoveryCompleted){
                 setLoader(false);
                 await Swal.fire({
