@@ -12,10 +12,11 @@ import PassRecoveryPage from './pages/password-recovery';
 import LoginPage from './pages/login';
 import { UserGlobalContext } from './contexts/user-contex';
 import { UserGlobalContextMemorySpace } from './contexts/user-contex';
+import CommonMainLoader from './components/common/main-loader';
 
 const App = () => {
 
-  const {user} = useContext(UserGlobalContextMemorySpace);
+  const {user, mainLoader} = useContext(UserGlobalContextMemorySpace);
 
   // console.log(process.env.NODE_ENV)
 
@@ -31,6 +32,11 @@ const App = () => {
 
   return (
     <>
+
+      {mainLoader ? <CommonMainLoader/>
+      
+      :
+
       <BrowserRouter>
         {
           !user ?
@@ -50,6 +56,10 @@ const App = () => {
           </Routes>
         }
       </BrowserRouter>
+
+      }
+
+
     </>
   );
 }

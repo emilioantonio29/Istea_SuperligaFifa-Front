@@ -28,11 +28,13 @@ const LoginContainer = () => {
             }else{
 
                 setLoader(true);
+                localStorage.clear();
 
                 let res = await login(email, password);
 
                 if(res && res.status && res.status == 200 && res.data.user){
                     setUser(res.data.user);
+                    localStorage.setItem("superligaenc", res.data.user.session);
                 }else if(res.response && res.response.status && res.response.status == 404){
                     setErrorMsg("• El usuario o la contraseña son incorrectos.")
                 }else if(res.response && res.response.status && res.response.status == 401){
@@ -42,7 +44,6 @@ const LoginContainer = () => {
                 }
 
                 setLoader(false);
-
 
             }
         }
