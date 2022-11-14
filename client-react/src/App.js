@@ -13,6 +13,10 @@ import LoginPage from './pages/login';
 import { UserGlobalContext } from './contexts/user-contex';
 import { UserGlobalContextMemorySpace } from './contexts/user-contex';
 import CommonMainLoader from './components/common/main-loader';
+import NavBarComponent from './components/navbar';
+import FAQPage from './pages/faq';
+import ProfilePage from './pages/profile';
+import FooterComponent from './components/footer';
 
 const App = () => {
 
@@ -41,19 +45,26 @@ const App = () => {
         {
           !user ?
           /* STACK NOT LOGGED IN */
-          <Routes>
-            <Route path='/' element={<LoginPage/>}/>
-            <Route path='/register' element={<RegisterPage/>}/>
-            <Route path='/passwordrecovery' element={<PassRecoveryPage/>}/>
-            <Route path='*' element={<NotFoundPage/>}/>
-          </Routes>
-
+          <>
+            <Routes>
+              <Route path='/' element={<LoginPage/>}/>
+              <Route path='/register' element={<RegisterPage/>}/>
+              <Route path='/passwordrecovery' element={<PassRecoveryPage/>}/>
+              <Route path='*' element={<LoginPage redirect={true}/>}/>
+            </Routes>      
+          </>
           :
-
           /* STACK USER LOGGED IN */
-          <Routes>
-            <Route path='/' element={<HomePage/>}/>
-          </Routes>
+          <>
+            <NavBarComponent/>
+            <Routes>
+              <Route path='/home' element={<HomePage/>}/>
+              <Route path='/faq' element={<FAQPage/>}/>
+              <Route path='/profile' element={<ProfilePage/>}/>
+              <Route path='*' element={<HomePage redirect={true}/>}/>
+            </Routes>
+            <FooterComponent/>
+          </>
         }
       </BrowserRouter>
 

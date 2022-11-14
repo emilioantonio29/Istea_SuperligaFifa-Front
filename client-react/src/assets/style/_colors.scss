@@ -1,0 +1,9 @@
+$color-weight:  rgb(100, 50, 100);
+$color-light:   rgb(210, 180, 210);
+$color-common:  rgb(184, 140, 184);
+
+:export {
+    color-weight:   $color-weight;
+    color-light:    $color-light;
+    color-common:   $color-common;
+  }

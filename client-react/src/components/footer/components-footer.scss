@@ -1,0 +1,16 @@
+@use '../../assets/style/colors' as color;
+
+.footer{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(246,231,255,1) 100%); 
+}
+
+.color-weight{
+    color: color.$color-weight; 
+    font-weight: bold;
+}
+
+.color-light{
+    color: color.$color-light; 
+    font-weight: bold;
+}

@@ -1,0 +1,53 @@
+@use '../../assets/style/colors' as color;
+
+.navbar-expand-lg{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(246,231,255,1) 100%); 
+}
+
+.navbar-text{
+    color: color.$color-common; 
+}
+
+.link-active{
+    text-decoration: none;
+    color: inherit;
+    padding-left: 20px;  
+    color: color.$color-weight; 
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.text-link {
+    text-decoration: none;
+    color: inherit;
+    padding-left: 20px;   
+    color: color.$color-light; 
+    font-size: 17px;
+}
+
+.text-link:hover {
+    color: color.$color-common; 
+}
+
+.link-active:hover {
+    color: color.$color-common; 
+}
+
+.close-session{
+    text-align: right;
+    margin-right: 20px !important
+}
+
+@media only screen and (max-width: 991px){
+
+    .center-box{
+        display: flex;
+        justify-content: left;
+    }
+
+    .close-session{
+        text-align: left;
+        margin-left: 0px
+    }
+}

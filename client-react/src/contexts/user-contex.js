@@ -10,6 +10,11 @@ export const UserGlobalContext = ({children}) =>{
     const [user, setUser] = useState(null);
     const [mainLoader, setMainLoader] = useState(true);
 
+    const logout = () =>{
+        setUser(null);
+        localStorage.clear();
+    }
+
     useEffect(()=>{
         //Mount: 
 
@@ -52,7 +57,9 @@ export const UserGlobalContext = ({children}) =>{
         <UserGlobalContextMemorySpace.Provider 
             value={
                 {
-                    user, setUser, mainLoader, setMainLoader
+                    user, setUser, 
+                    mainLoader, setMainLoader,
+                    logout
                 }}>
             {children}
         </UserGlobalContextMemorySpace.Provider>
