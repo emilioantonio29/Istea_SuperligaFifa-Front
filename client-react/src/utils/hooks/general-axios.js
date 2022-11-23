@@ -156,3 +156,21 @@ export const loginSession = async (token) => {
     }
 
 }
+
+export const getTournamentsAdmin = async (token) => {
+
+    try {
+        const data = await axios({
+            method: "GET",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_TOURNAMENTADMIN,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            }
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

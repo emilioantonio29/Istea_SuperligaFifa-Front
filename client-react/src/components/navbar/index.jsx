@@ -22,13 +22,13 @@ const NavBarComponent = () => {
           <div className="navbar-collapse center-box" id="navbarText" >
             <ul className="navbar-nav ">
               <li className="nav-item">
-                <NavLink to="/home" className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact activeclassname="link-active">Torneos</NavLink>
+                <NavLink to="/home" className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact="true" activeclassname="link-active">Torneos</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={`/profile`} className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact activeclassname="link-active">Perfil</NavLink>
+                <NavLink to={`/profile`} className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact="true" activeclassname="link-active">Perfil</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to={`/faq`} className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact activeclassname="link-active">FAQ</NavLink>
+                <NavLink to={`/faq`} className={({ isActive }) => (isActive ? 'link-active' : 'text-link')} exact="true" activeclassname="link-active">FAQ</NavLink>
               </li>
             </ul>
           </div>

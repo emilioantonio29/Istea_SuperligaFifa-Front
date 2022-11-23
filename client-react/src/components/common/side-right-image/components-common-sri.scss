@@ -12,7 +12,7 @@
 .bg-image-text{
     text-align: center;
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -20,7 +20,7 @@
 }
 
 .transbox {
-    background-image: linear-gradient(0deg, rgba(57,93,132,.5), rgba(2, 10, 20, 0.5));
+    background-image: linear-gradient(0deg, rgb(210, 180, 210), rgba(2, 10, 20, 0.5));
     padding: 4%;
 }
 
