@@ -174,3 +174,46 @@ export const getTournamentsAdmin = async (token) => {
     }
 
 }
+
+export const getTournamentsPlayer = async (token) => {
+
+    try {
+        const data = await axios({
+            method: "GET",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_TOURNAMENTPLAYER,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            }
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
+
+export const createTournament = async (token, cantidadjugadores, liga, nombre, jugadores) => {
+
+    let body = {
+        cantidadjugadores,
+        liga,
+        nombre
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_CREATETOURNAMENT,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

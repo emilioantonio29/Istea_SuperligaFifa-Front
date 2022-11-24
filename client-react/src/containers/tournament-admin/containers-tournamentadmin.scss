@@ -1,0 +1,36 @@
+@use '../../assets/style/colors' as color;
+
+.card-tournamentadmin{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 20vw;
+}
+
+.btn-cardtournament{
+    background-color: color.$color-weight;
+    color: white;
+    font-weight: 500;
+    width: 120px;
+    margin: 0px 5px 0px 5px;
+}
+
+.btn-cardtournament:hover{
+    background-color: color.$color-light;
+}
+
+@media only screen and (max-width: 950px){
+
+    .card-tournamentadmin{
+        width: 30vw;
+
+    }
+}
+
+@media only screen and (max-width: 700px){
+
+    .card-tournamentadmin{
+        margin-left: 0px;
+        width: 70vw;
+
+    }
+}

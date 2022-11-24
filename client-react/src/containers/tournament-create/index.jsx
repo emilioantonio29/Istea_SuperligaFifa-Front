@@ -4,8 +4,12 @@ import { getTournamentsAdmin } from "../../utils/hooks/general-axios";
 import CommonSpacer from "../../components/common/spacer";
 import { spaceValidator } from "../../utils/hooks/regex-validator";
 import { nameValidator } from "../../utils/hooks/regex-validator";
+import { createTournament } from "../../utils/hooks/general-axios";
+import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 
 const TournamentCreateContainer = () => {
+
+    const {logout} = useContext(UserGlobalContextMemorySpace);
 
     const [nombre, setNombre] = useState("");
     const [liga, setLiga] = useState("");
@@ -13,18 +17,58 @@ const TournamentCreateContainer = () => {
     const [errorMsg, setErrorMsg] = useState("");
     const [loader, setLoader] = useState("");
 
-    const handleCreateTournament = (event) =>{
+    const cleanForm = () =>{
+        setNombre("");
+        setLiga("");
+        setCantidadJugadores("");
+    }
+
+    const handleCreateTournament = async (event) =>{
 
         event.preventDefault();
 
         if(!nombre || !liga || !cantidadJugadores){
             setErrorMsg("• Por favor ingresa los datos solicitados.")
         }else{
+
             setErrorMsg("")
+            setLoader(true);
+
+            let token = localStorage.getItem("superligaenc");
+
+            let res = await createTournament(token, cantidadJugadores, liga, nombre)
+            // console.log(res.response.data.error.expired)
+            if(res.status ==200){
+                await Swal.fire({
+                    allowOutsideClick: false,
+                    icon: 'success',
+                    title: '<h5 style="color: #B88CB8">¡Torneo creado exitosamente!</h5>',
+                    text: "Ahora solo falta que los jugadores se inscriban para realizar la asignación de fechas.",
+                    confirmButtonColor: '#B88CB8',
+                    confirmButtonText: 'Continuar'
+                })
+                setLoader(false);
+                event.target.reset();
+                cleanForm();
+
+            }else if(res.response.data.error.expired){
+                logout();
+                await Swal.fire({
+                    allowOutsideClick: false,
+                    icon: 'info',
+                    title: '<h5 style="color: #B88CB8">¡Tu sesión expiró!</h5>',
+                    text: "Por favor inicia sesión nuevamente.",
+                    confirmButtonColor: '#B88CB8',
+                    confirmButtonText: 'Continuar'
+                })
+            }else{
+                setLoader(false);
+                setErrorMsg("• Ocurrió un error al crear el torneo, por favor intenta en unos minutos.")
+
+            }
+
 
         }
-
-        console.log("create", nombre, liga, cantidadJugadores)
     }
     
     useEffect(()=>{
@@ -44,7 +88,7 @@ const TournamentCreateContainer = () => {
                     <form className="d-flex flex-column justify-content-center form-login" onSubmit={handleCreateTournament}>
                         <div className="form-group form-group-login d-flex justify-content-center">
                             <input 
-                                maxLength={25}
+                                maxLength={15}
                                 onChange={(e)=> 
                                     setNombre((!nombre ? nameValidator(e.target.value)  
                                     : spaceValidator(e.target.value)))}  
@@ -95,7 +139,7 @@ const TournamentCreateContainer = () => {
                         : 
                         <>
                             <div className="form-group form-group-login d-flex justify-content-center">
-                                <input type="submit" className="btn btn-primary input-login input-submit" value="Continuar"/>
+                                <input type="submit" className="btn btn-primary input-login input-submit" value="Crear Torneo"/>
                             </div>
                         </>
                         }
