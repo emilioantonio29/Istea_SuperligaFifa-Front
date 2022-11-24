@@ -217,3 +217,21 @@ export const createTournament = async (token, cantidadjugadores, liga, nombre, j
     }
 
 }
+
+export const getOpenTournamentsPlayer = async (token, params) => {
+
+    try {
+        const data = await axios({
+            method: "GET",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_GETOPENTOURNAMENTS+params,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            }
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

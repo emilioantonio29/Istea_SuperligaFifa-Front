@@ -6,6 +6,7 @@ import { spaceValidator } from "../../utils/hooks/regex-validator";
 import { nameValidator } from "../../utils/hooks/regex-validator";
 import { createTournament } from "../../utils/hooks/general-axios";
 import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
+import Overlay from "../../components/overlay";
 
 const TournamentCreateContainer = () => {
 
@@ -83,6 +84,7 @@ const TournamentCreateContainer = () => {
 
     return (  
         <>
+            {loader?<Overlay/>:null}
             <div className="d-flex flex-column align-items-center" style={{minHeight: "40vh", marginTop: "10vh"}}>
                 <div className="d-flex flex-column">
                     <form className="d-flex flex-column justify-content-center form-login" onSubmit={handleCreateTournament}>
