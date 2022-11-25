@@ -28,7 +28,7 @@ const TournamentJugadorContainer = () => {
             setTournamentArray(res.data.tournaments)
             setLoader(false);
 
-        }else if(res.response.data.error.expired){
+        }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
             logout();
             await Swal.fire({
                 allowOutsideClick: false,
@@ -85,11 +85,11 @@ const TournamentJugadorContainer = () => {
                                             <>
                                                 {tournamentArray.map((data, index)=>{
                                                     return(
-                                                        <div class="card card-tournamentadmin" key={index}>
-                                                            <div class="card-body">
+                                                        <div className="card card-tournamentadmin" key={index}>
+                                                            <div className="card-body">
                                                                 <div className="d-flex flex-column" style={{width: "100%"}}>
-                                                                    <h5 class="card-title">{data.nombre} </h5>
-                                                                    <h6 class="card-subtitle mb-2 text-muted">{data.owner}</h6>
+                                                                    <h5 className="card-title">{data.nombre} </h5>
+                                                                    <h6 className="card-subtitle mb-2 text-muted">{data.owner}</h6>
                                                                     {data.cerrado ?
                                                                         <p><span><BiLabel size='14px' style={{color: "red", fontWeight: "bolder"}}/></span> cerrado</p>
                                                                         :
@@ -102,9 +102,9 @@ const TournamentJugadorContainer = () => {
                                                                         <p><span><BiErrorCircle size='14px' style={{color: "red", fontWeight: "bolder"}}/></span> error</p>
                                                                     }
                                                                 </div>
-                                                                <h6 class="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Liga: </span>{data.liga}</h6>
-                                                                <h6 class="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Jugadores: </span>{data.cantidadjugadores}</h6>
-                                                                {/* <p class="card-text">Lorem Ipsum description.</p> */}
+                                                                <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Liga: </span>{data.liga}</h6>
+                                                                <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Jugadores: </span>{data.cantidadjugadores}</h6>
+                                                                {/* <p className="card-text">Lorem Ipsum description.</p> */}
                                                                 <CommonSpacer marginBottom="20px"/>
                                                                 <div className="d-flex justify-content-center">
                                                                     <button className="btn btn-cardtournament">Detalle</button>

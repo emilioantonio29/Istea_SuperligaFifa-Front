@@ -40,6 +40,9 @@ const TournamentCreateContainer = () => {
             let res = await createTournament(token, cantidadJugadores, liga, nombre)
             // console.log(res.response.data.error.expired)
             if(res.status ==200){
+                setLoader(false);
+                event.target.reset();
+                cleanForm();
                 await Swal.fire({
                     allowOutsideClick: false,
                     icon: 'success',
@@ -48,11 +51,9 @@ const TournamentCreateContainer = () => {
                     confirmButtonColor: '#B88CB8',
                     confirmButtonText: 'Continuar'
                 })
-                setLoader(false);
-                event.target.reset();
-                cleanForm();
 
-            }else if(res.response.data.error.expired){
+
+            }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
                 logout();
                 await Swal.fire({
                     allowOutsideClick: false,

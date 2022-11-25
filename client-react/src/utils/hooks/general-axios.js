@@ -235,3 +235,26 @@ export const getOpenTournamentsPlayer = async (token, params) => {
     }
 
 }
+
+export const registerPlayerInOpenTournament = async (token, id) => {
+
+    let body = {
+        id
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_REGISTERPLAYERINTOURNAMENT,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
