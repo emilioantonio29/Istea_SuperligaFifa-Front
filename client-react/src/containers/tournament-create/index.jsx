@@ -53,7 +53,7 @@ const TournamentCreateContainer = () => {
                 })
 
 
-            }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
+            }else if(res.response && res.response.data && res.response.data.error && res.response.data.error.expired){
                 logout();
                 await Swal.fire({
                     allowOutsideClick: false,

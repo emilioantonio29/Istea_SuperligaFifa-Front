@@ -17,6 +17,7 @@ import NavBarComponent from './components/navbar';
 import FAQPage from './pages/faq';
 import ProfilePage from './pages/profile';
 import FooterComponent from './components/footer';
+import RedirectPage from './pages/redirect';
 
 const App = () => {
 
@@ -61,6 +62,7 @@ const App = () => {
               <Route path='/home' element={<HomePage/>}/>
               <Route path='/faq' element={<FAQPage/>}/>
               <Route path='/profile' element={<ProfilePage/>}/>
+              <Route path='/redirect' element={<RedirectPage/>}/>
               <Route path='*' element={<HomePage redirect={true}/>}/>
             </Routes>
             <FooterComponent/>

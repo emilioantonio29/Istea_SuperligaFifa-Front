@@ -35,7 +35,7 @@ const TournamentBuscadorContainer = () => {
             setTournamentArray(res.data.tournaments)
             setLoader(false);
 
-        }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
+        }else if(res.response && res.response.data && res.response.data.error && res.response.data.error.expired){
             logout();
             Swal.fire({
                 allowOutsideClick: false,
@@ -91,7 +91,7 @@ const TournamentBuscadorContainer = () => {
                 confirmButtonText: 'Continuar'
             })
 
-        }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
+        }else if(res.response && res.response.data && res.response.data.error && res.response.data.error.expired){
             logout();
             Swal.fire({
                 allowOutsideClick: false,
@@ -209,7 +209,8 @@ const TournamentBuscadorContainer = () => {
                                                                     }
                                                                 </div>
                                                                 <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Liga: </span>{data.liga}</h6>
-                                                                <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Jugadores: </span>{data.cantidadjugadores}</h6>
+                                                                <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Cupos: </span>{data.cantidadjugadores}</h6>
+                                                                <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Inscriptos: </span>{data.jugadores.length}</h6>
                                                                 {/* <p className="card-text">Lorem Ipsum description.</p> */}
                                                                 <CommonSpacer marginBottom="20px"/>
 

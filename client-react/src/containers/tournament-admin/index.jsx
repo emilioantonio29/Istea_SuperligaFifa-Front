@@ -7,6 +7,7 @@ import {BiLabel} from 'react-icons/bi';
 import {BiErrorCircle} from 'react-icons/bi';
 import CommonSpacer from "../../components/common/spacer";
 import Overlay from "../../components/overlay";
+import DrawerAdminComponent from "../../components/drawer-admin";
 
 
 const TournamentAdminContainer = () => {
@@ -27,7 +28,7 @@ const TournamentAdminContainer = () => {
             setTournamentArray(res.data.tournaments)
             setLoader(false);
 
-        }else if(res.response.data && res.response.data.error && res.response.data.error.expired){
+        }else if(res.response && res.response.data && res.response.data.error && res.response.data.error.expired){
             logout();
             await Swal.fire({
                 allowOutsideClick: false,
@@ -104,11 +105,12 @@ const TournamentAdminContainer = () => {
                                                                         }
                                                                     </div>
                                                                     <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Liga: </span>{data.liga}</h6>
-                                                                    <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Jugadores: </span>{data.cantidadjugadores}</h6>
+                                                                    <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Cupos: </span>{data.cantidadjugadores}</h6>
+                                                                    <h6 className="card-subtitle mb-2 text-muted"><span style={{fontWeight: "bolder"}}>Inscriptos: </span>{data.jugadores.length}</h6>
                                                                     {/* <p className="card-text">Lorem Ipsum description.</p> */}
                                                                     <CommonSpacer marginBottom="20px"/>
                                                                     <div className="d-flex justify-content-center">
-                                                                        <button className="btn btn-cardtournament">Detalle</button>
+                                                                        <DrawerAdminComponent data={data}/>
                                                                     </div>
                                                                 </div>
                                                             </div>

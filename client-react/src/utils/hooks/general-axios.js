@@ -258,3 +258,49 @@ export const registerPlayerInOpenTournament = async (token, id) => {
     }
 
 }
+
+export const AdminOpenTournament = async (token, id) => {
+
+    let body = {
+        id
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_OPENTOURNAMENT,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
+
+export const adminTournamentDetail = async (token, id) => {
+
+    let body = {
+        id
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_TOURNAMENTDETAIL,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

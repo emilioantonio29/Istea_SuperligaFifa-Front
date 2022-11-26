@@ -61,7 +61,7 @@ const HomePage = (props) => {
 
     return (  
         <>
-            <div style={{display: "flex", flexDirection: "column", minHeight: "85vh", paddingTop: "100px", paddingBottom: "5vh"}} className='container'>
+            <div style={{display: "flex", flexDirection: "column", minHeight: "20vh", paddingTop: "100px", paddingBottom: "5vh"}} className='container'>
                 <div className="jumbotron" style={{borderRadius: "20px", marginTop: "20px"}}>
                     <div className="d-flex flex-column">
                         <div className="submenu">
