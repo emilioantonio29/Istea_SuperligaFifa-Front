@@ -134,7 +134,7 @@ const FixtureContainer = (props) => {
                                                     aria-describedby=""
                                                     value={visitanteResult} 
                                                     style={{width: "40px"}}
-                                                    onChange={(e)=> setVisitateResult(e.target.value.replace(/[^0-9]/g, ''))} 
+                                                    onChange={(e)=> handleVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
                                                     disabled
                                                 />
                                             </>
@@ -149,7 +149,7 @@ const FixtureContainer = (props) => {
                                                     aria-describedby=""
                                                     value={visitanteResult} 
                                                     style={{width: "40px"}}
-                                                    onChange={(e)=> setVisitateResult(e.target.value.replace(/[^0-9]/g, ''))} 
+                                                    onChange={(e)=> handleVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
                                                 />
                                             </>
                                             }
