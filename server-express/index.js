@@ -23,7 +23,7 @@ app.get('/test', function(req, res) {
 app.use(express.static(path.join(__dirname, "..", "client-react/build")));
 //app.use(express.static("public"));
 app.use((req, res) => {
-  console.log("paso")
+  // console.log("paso")
   res.sendFile(path.join(__dirname, "..", "client-react/build", "index.html"));
 });
 

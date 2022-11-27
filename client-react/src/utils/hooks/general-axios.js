@@ -304,3 +304,21 @@ export const adminTournamentDetail = async (token, id) => {
     }
 
 }
+
+export const getFitures = async (token, id) => {
+
+    try {
+        const data = await axios({
+            method: "GET",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_GETFIXTURES+id,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            }
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}

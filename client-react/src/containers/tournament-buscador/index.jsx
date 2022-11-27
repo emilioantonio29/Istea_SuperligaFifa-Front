@@ -147,7 +147,7 @@ const TournamentBuscadorContainer = () => {
                             className="form-control input-login" 
                             placeholder="Busca un torneo por nombre"
                         /> */}
-                        <div className="input-group mb-3">
+                        <div className="input-group" style={{width: "20vw"}}>
                             <input 
                                 maxLength={15}
                                 onChange={(e)=> 

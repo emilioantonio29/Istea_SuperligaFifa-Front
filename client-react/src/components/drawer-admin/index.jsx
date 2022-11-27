@@ -21,6 +21,8 @@ import { AdminOpenTournament, adminTournamentDetail } from '../../utils/hooks/ge
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from "react-router-dom";
 import TournamentDetailComponent from '../drawer-tournamentdetail';
+import Collapse from "@mui/material/Collapse";
+
 
 
 export default function DrawerAdminComponent(props) {
@@ -29,13 +31,17 @@ export default function DrawerAdminComponent(props) {
 
   const [showJugadores, setShowJugadores] = React.useState(false);
   const [loader, setLoader] = React.useState(false);
-
+  const [checked, setChecked] = React.useState(false);
   const [state, setState] = React.useState({
     top: false,
     left: false,
     bottom: false,
     right: false,
   });
+
+  const handleChange = () => {
+      setChecked((prev) => !prev);
+  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -86,7 +92,6 @@ export default function DrawerAdminComponent(props) {
 
     setLoader(true)
     let res = await AdminOpenTournament(token, props.data._id)
-    console.log(res)
     if(res.status == 200){
 
       setLoader(false);
@@ -159,50 +164,52 @@ export default function DrawerAdminComponent(props) {
                         
                         <TournamentDetailComponent data={props.data}/>
 
-                        <Divider>
-                          <Chip label="ACCIONES" />
+                        <Divider style={{marginTop: "30px"}}>
+                          {/* <Chip label="ACCIONES" /> */}
+                          <button className='btn btn-actions' onClick={handleChange}><span style={{fontWeight: "bold"}}>ACCIONES</span></button>
                         </Divider>
                         <CommonSpacer marginTop={"40px"}/>
-                        <div className="d-flex justify-content-around">
-                          
-                          {props.data.jugadores.length == props.data.cantidadjugadores && props.data.cerrado == false && props.data.torneoid == ""? 
-                          <>
-                            <button onClick={()=>{handleIniciarTorneo(anchor)}} className="btn btn-cardtournament">INICIAR TORNEO</button>
-                          </>
-                          :
-                          props.data.cerrado == true? 
-                          <>
-                            <Tooltip title="El torneo ya se encuentra cerrado.">
-                              <div className="d-flex justify-content-center">
-                                <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
-                              </div>                            
-                            </Tooltip>
-                          </>
-                          :
-                          props.data.jugadores.length !== props.data.cantidadjugadores? 
-                          <>
-                            <Tooltip title="Faltan jugadores para iniciar el torneo.">
-                              <div className="d-flex justify-content-center">
-                                <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
-                              </div>                            
-                            </Tooltip>
-                          </>
-                          :
-                          props.data.cerrado == false && props.data.torneoid !== "" ?
-                          <>
-                            <Tooltip title="El torneo ya se encuentra iniciado.">
-                              <div className="d-flex justify-content-center">
-                                <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
-                              </div>                            
-                            </Tooltip>
-                          </>
-                          :
-                          <></>
-                          }
-
-                          <button className="btn btn-cardtournament">CERRAR TORNEO</button>
-                          <button onClick={toggleDrawer(anchor, false)} className="btn btn-cardtournament">VOLVER</button>
-                        </div>
+                        <Collapse in={checked}>
+                          <div className="d-flex justify-content-around">
+                            
+                            {props.data.jugadores.length == props.data.cantidadjugadores && props.data.cerrado == false && props.data.torneoid == ""? 
+                            <>
+                              <button onClick={()=>{handleIniciarTorneo(anchor)}} className="btn btn-cardtournament">INICIAR TORNEO</button>
+                            </>
+                            :
+                            props.data.cerrado == true? 
+                            <>
+                              <Tooltip title="El torneo ya se encuentra cerrado.">
+                                <div className="d-flex justify-content-center">
+                                  <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
+                                </div>                            
+                              </Tooltip>
+                            </>
+                            :
+                            props.data.jugadores.length !== props.data.cantidadjugadores? 
+                            <>
+                              <Tooltip title="Faltan jugadores para iniciar el torneo.">
+                                <div className="d-flex justify-content-center">
+                                  <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
+                                </div>                            
+                              </Tooltip>
+                            </>
+                            :
+                            props.data.cerrado == false && props.data.torneoid !== "" ?
+                            <>
+                              <Tooltip title="El torneo ya se encuentra iniciado.">
+                                <div className="d-flex justify-content-center">
+                                  <button disabled onClick={handleIniciarTorneo} className="btn btn-cardtournament">INICIAR TORNEO</button>
+                                </div>                            
+                              </Tooltip>
+                            </>
+                            :
+                            <></>
+                            }
+                            <button className="btn btn-cardtournament">CERRAR TORNEO</button>
+                            <button onClick={toggleDrawer(anchor, false)} className="btn btn-cardtournament">VOLVER</button>
+                          </div>
+                        </Collapse>
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

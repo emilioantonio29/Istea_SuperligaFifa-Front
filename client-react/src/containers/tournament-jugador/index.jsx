@@ -7,6 +7,7 @@ import {BiLabel} from 'react-icons/bi';
 import {BiErrorCircle} from 'react-icons/bi';
 import CommonSpacer from "../../components/common/spacer";
 import Overlay from "../../components/overlay";
+import DrawerPlayerComponent from "../../components/drawer-player";
 
 const TournamentJugadorContainer = () => {
 
@@ -108,7 +109,7 @@ const TournamentJugadorContainer = () => {
                                                                 {/* <p className="card-text">Lorem Ipsum description.</p> */}
                                                                 <CommonSpacer marginBottom="20px"/>
                                                                 <div className="d-flex justify-content-center">
-                                                                    <button className="btn btn-cardtournament">Detalle</button>
+                                                                    <DrawerPlayerComponent data={data}/>
                                                                 </div>
                                                             </div>
                                                         </div>

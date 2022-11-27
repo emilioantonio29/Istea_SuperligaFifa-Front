@@ -18,6 +18,18 @@
     background-color: color.$color-light;
 }
 
+.btn-actions{
+    background-color: rgb(241, 222, 222);
+    color: black;
+    font-weight: 500;
+    width: 120px;
+    margin: 0px 5px 0px 5px;
+}
+
+.btn-actions:hover{
+    background-color: rgb(212, 188, 188);
+}
+
 @media only screen and (max-width: 950px){
 
     .card-tournamentadmin{
