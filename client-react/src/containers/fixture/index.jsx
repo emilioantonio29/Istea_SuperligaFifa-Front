@@ -54,10 +54,6 @@ const FixtureContainer = (props) => {
         
     }
 
-    const handleMSG = () =>{
-        !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : null;
-    }
-
     React.useEffect(()=>{
         //Mount: 
     
@@ -198,8 +194,8 @@ const FixtureContainer = (props) => {
                                 </div>
                                 <Divider style={{marginRight: "100px", marginLeft: "50px"}}/>
                             </div> */}
-                            <p>test</p>
-                            {/* <FixtureInputContainer fixtureId={props.fixtureId} data={data} id={data._id} local={JSON.parse(data.local)} visitante={JSON.parse(data.visitante)} index={props.index}/> */}
+                            
+                            <FixtureInputContainer fixtureId={props.fixtureId} data={data} id={data._id} local={JSON.parse(data.local)} visitante={JSON.parse(data.visitante)} index={props.index}/>
 
                         </Collapse>
                     </div>
