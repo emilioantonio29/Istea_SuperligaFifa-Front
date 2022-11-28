@@ -73,7 +73,7 @@ const FixtureInputContainer = (props) => {
     }
 
     const handleMSG = () =>{
-        !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : setUpdateButtonMSG("")
+        return !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : setUpdateButtonMSG("")
     }
 
     React.useEffect(()=>{
