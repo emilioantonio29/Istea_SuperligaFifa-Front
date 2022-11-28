@@ -32,7 +32,7 @@ const FixtureInputContainer = (props) => {
         if(localResult && visitanteResult){
             setError(false)
             setLoader(true)
-            
+
             // let localscore = props.local
             // let visitantescore = props.visitante
             // localscore.resultado = localResult
@@ -73,7 +73,7 @@ const FixtureInputContainer = (props) => {
     }
 
     const handleMSG = () =>{
-        !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : setUpdateButtonMSG("");
+        !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : setUpdateButtonMSG("")
     }
 
     React.useEffect(()=>{
