@@ -28,18 +28,17 @@ const FixtureInputContainer = (props) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const handleUpdateFixture = async (data) =>{
-
+        // console.log(props)
         if(localResult && visitanteResult){
-            setError(false);
-            setLoader(true);
-            let local = props.local
-            let visitante = props.visitante
-
-            local.resultado = localResult
-            visitante.resultado = visitanteResult
-
-            let localString = JSON.stringify(local);
-            let visitanteString = JSON.stringify(visitante);
+            setError(false)
+            setLoader(true)
+            
+            // let localscore = props.local
+            // let visitantescore = props.visitante
+            // localscore.resultado = localResult
+            // visitantescore.resultado = visitanteResult
+            // let localString = JSON.stringify(local);
+            // let visitanteString = JSON.stringify(visitante);
 
             let body = {
                 idFixture: props.fixtureId,
@@ -52,18 +51,18 @@ const FixtureInputContainer = (props) => {
 
             let res = await updateFixtures("token", body)
 
-            console.log("RES", res)
+            // console.log("RES", res)
 
             if(res.data._id){
 
-                setLoader(false);
+                setLoader(false)
                 setLoaded(true)
-                setBlockInput(true);
+                setBlockInput(true)
 
             }else{
 
-                setLoader(false);
-                setError(true);
+                setLoader(false)
+                setError(true)
 
             }
 

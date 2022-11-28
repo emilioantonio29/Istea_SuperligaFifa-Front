@@ -100,7 +100,7 @@ export default function DrawerPlayerComponent(props) {
 
                         <CommonSpacer marginTop={"40px"}/>
 
-                        <ResultsDetailComponent/>
+                        <ResultsDetailComponent data={props.data}/>
 
                     </div>
                 </div>

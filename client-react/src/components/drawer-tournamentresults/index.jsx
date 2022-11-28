@@ -19,7 +19,7 @@ const ResultsDetailComponent = (props) => {
         setChecked((prev) => !prev);
     };
 
-
+    console.log("propsTABLA", props)
 
     React.useEffect(()=>{
         //Mount: 

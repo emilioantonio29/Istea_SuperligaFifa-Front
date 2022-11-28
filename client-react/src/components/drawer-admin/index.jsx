@@ -31,7 +31,7 @@ export default function DrawerAdminComponent(props) {
 
   const [showJugadores, setShowJugadores] = React.useState(false);
   const [loader, setLoader] = React.useState(false);
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(true);
   const [state, setState] = React.useState({
     top: false,
     left: false,
