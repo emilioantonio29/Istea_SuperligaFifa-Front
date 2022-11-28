@@ -2,6 +2,8 @@ import * as React from "react";
 import Collapse from "@mui/material/Collapse";
 import {BiListPlus} from 'react-icons/bi';
 import {BiListMinus} from 'react-icons/bi';
+import {BiCheckDouble} from 'react-icons/bi';
+import {BiMessageAltError} from 'react-icons/bi';
 import Divider from '@mui/material/Divider';
 import { Tooltip } from "@mui/material";
 import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
@@ -22,10 +24,13 @@ const FixtureInputContainer = (props) => {
     const [updateButtonMSG, setUpdateButtonMSG] = React.useState("");
     const [blockInput, setBlockInput] = React.useState(false);
     const [loader, setLoader] = React.useState(false);
+    const [error, setError] = React.useState(false);
+    const [loaded, setLoaded] = React.useState(false);
 
     const handleUpdateFixture = async (data) =>{
 
         if(localResult && visitanteResult){
+            setError(false);
             setLoader(true);
             let local = props.local
             let visitante = props.visitante
@@ -53,33 +58,31 @@ const FixtureInputContainer = (props) => {
 
                 setLoader(false);
 
-                Swal.fire({
-                    customClass: {
-                        container: 'my-swal'
-                    },
-                    position: 'top-end',
-                    icon: 'success',
-                    title: '¡Resultado guardado de forma exitosa!',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-
+                // Swal.fire({
+                //     position: 'top-end',
+                //     icon: 'success',
+                //     title: '¡Resultado guardado de forma exitosa!',
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
+                setLoaded(true)
                 setBlockInput(true);
 
             }else{
 
                 setLoader(false);
+                setError(true);
 
-                Swal.fire({
-                    customClass: {
-                        container: 'my-swal'
-                    },
-                    position: 'top-end',
-                    icon: 'info',
-                    title: '¡Ocurrió un error al intentar guardar el resultado. Por favor intenta nuevamente unos minutos!',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+                // Swal.fire({
+                //     customClass: {
+                //         container: 'my-swal'
+                //     },
+                //     position: 'top-end',
+                //     icon: 'info',
+                //     title: '¡Ocurrió un error al intentar guardar el resultado. Por favor intenta nuevamente unos minutos!',
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
             }
 
         }else{
@@ -213,18 +216,20 @@ const FixtureInputContainer = (props) => {
                         {props.visitante.resultado !== "" || blockInput? 
                         <>
                             <Tooltip title="Ya se encuentra cargada la fecha.">
-                                <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center" style={{marginLeft: loaded ? "25px": "0px"}}>
                                     <button disabled className="btn btn-actions">GUARDAR RESULTADO</button>
-                                </div>                            
+                                </div>              
                             </Tooltip>
+                            {loaded ? <><BiCheckDouble size='30px' style={{color: "green"}}/></> : <></>}
                         </>
                         : 
                         <>
                             <Tooltip title={updateButtonMSG}>
-                                <div className="d-flex justify-content-center">
+                                <div className="d-flex justify-content-center" style={{marginLeft: error ? "25px" : "0px"}}>
                                     <button onMouseEnter={handleMSG} onClick={handleUpdateFixture} className="btn btn-actions">GUARDAR RESULTADO</button>
-                                </div>                            
+                                </div> 
                             </Tooltip>
+                            {error ? <> <BiMessageAltError size='30px' style={{color: "red"}}/> contact admin </> : <></>}
                         </>
                         }
 
