@@ -4,17 +4,21 @@ import {BiListPlus} from 'react-icons/bi';
 import {BiListMinus} from 'react-icons/bi';
 import Divider from '@mui/material/Divider';
 import { Tooltip } from "@mui/material";
-
+import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
+import FixtureInputContainer from "./input";
 
 const FixtureContainer = (props) => {
-    
+
+    const {user} = React.useContext(UserGlobalContextMemorySpace);
+
     const [checked, setChecked] = React.useState(false);
     const [local, setLocal] = React.useState({});
     const [visitante, setVisitante] = React.useState({});
     const [localResult, setLocalResult] = React.useState("");
     const [visitanteResult, setVisitanteResult] = React.useState("");
+    const [updateButtonMSG, setUpdateButtonMSG] = React.useState("");
 
-    console.log("FixtureContainer", props)
+    // console.log("FixtureContainer", props)
 
     const handleChange = () => {
       setChecked((prev) => !prev);
@@ -38,6 +42,20 @@ const FixtureContainer = (props) => {
     const handleVisitanteResult = (data) =>{
         let json = JSON.parse(data)
         return json.resultado
+    }
+
+    const handleUpdateFixture = async (data) =>{
+        console.log("handleUpdateFixture", data)
+
+        let local = JSON.parse(data.local)
+        let visitante = JSON.parse(data.visitante)
+
+        local.resultado = localResult
+        
+    }
+
+    const handleMSG = () =>{
+        !localResult || !visitanteResult ? setUpdateButtonMSG("Ingresa el resultado del partido antes de avanzar") : null;
     }
 
     React.useEffect(()=>{
@@ -80,8 +98,10 @@ const FixtureContainer = (props) => {
                         {/* <button onClick={()=>{console.log(data)}}>test</button>
                         <button onClick={()=>{console.log(JSON.parse(data.local))}}>test</button> */}
 
+                        {/* <FixtureInputContainer data={data}/> */}
+
                         <Collapse in={checked}>
-                            <div style={{marginBotton: "30px"}}>
+                            {/* <div style={{marginBotton: "30px"}}>
                                 <Divider style={{marginRight: "100px", marginLeft: "50px"}}/>
                                 <div className="d-flex flex-row">
                                     <div className="d-flex flex-column col-md-8" style={{paddingRight: "90px", marginTop: "11px", marginBottom: "10px"}}>
@@ -134,7 +154,7 @@ const FixtureContainer = (props) => {
                                                     aria-describedby=""
                                                     value={visitanteResult} 
                                                     style={{width: "40px"}}
-                                                    onChange={(e)=> handleVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
+                                                    onChange={(e)=> setVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
                                                     disabled
                                                 />
                                             </>
@@ -149,8 +169,9 @@ const FixtureContainer = (props) => {
                                                     aria-describedby=""
                                                     value={visitanteResult} 
                                                     style={{width: "40px"}}
-                                                    onChange={(e)=> handleVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
+                                                    onChange={(e)=> setVisitanteResult(e.target.value.replace(/[^0-9]/g, ''))} 
                                                 />
+
                                             </>
                                             }
                                         </div>
@@ -166,13 +187,20 @@ const FixtureContainer = (props) => {
                                         </>
                                         : 
                                         <>
-                                            <button className="btn btn-actions">GUARDAR RESULTADO</button>
+                                            <Tooltip title={updateButtonMSG}>
+                                                <div className="d-flex justify-content-center">
+                                                    <button onMouseEnter={handleMSG} onClick={()=>{handleUpdateFixture(data)}} className="btn btn-actions">GUARDAR RESULTADO</button>
+                                                </div>                            
+                                            </Tooltip>
                                         </>
                                         }
                                     </div>
                                 </div>
                                 <Divider style={{marginRight: "100px", marginLeft: "50px"}}/>
-                            </div>
+                            </div> */}
+                            
+                            <FixtureInputContainer fixtureId={props.fixtureId} data={data} id={data._id} local={JSON.parse(data.local)} visitante={JSON.parse(data.visitante)} index={props.index}/>
+
                         </Collapse>
                     </div>
                 )})

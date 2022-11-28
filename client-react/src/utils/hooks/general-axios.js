@@ -322,3 +322,26 @@ export const getFitures = async (token, id) => {
     }
 
 }
+
+export const updateFixtures = async (token, body) => {
+
+    // let body = {
+    //     id
+    // }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_UPDATEFIXTURES,
+            headers:{
+                "Content-Type": "application/json",
+                "token": `${token}`
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
