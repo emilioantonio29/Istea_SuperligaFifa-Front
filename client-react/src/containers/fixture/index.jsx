@@ -198,8 +198,8 @@ const FixtureContainer = (props) => {
                                 </div>
                                 <Divider style={{marginRight: "100px", marginLeft: "50px"}}/>
                             </div> */}
-                            
-                            <FixtureInputContainer fixtureId={props.fixtureId} data={data} id={data._id} local={JSON.parse(data.local)} visitante={JSON.parse(data.visitante)} index={props.index}/>
+                            <p>test</p>
+                            {/* <FixtureInputContainer fixtureId={props.fixtureId} data={data} id={data._id} local={JSON.parse(data.local)} visitante={JSON.parse(data.visitante)} index={props.index}/> */}
 
                         </Collapse>
                     </div>
