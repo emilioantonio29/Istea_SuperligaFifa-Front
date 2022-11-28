@@ -54,17 +54,9 @@ const FixtureInputContainer = (props) => {
 
             console.log("RES", res)
 
-            if(res.data?._id){
+            if(res.data._id){
 
                 setLoader(false);
-
-                // Swal.fire({
-                //     position: 'top-end',
-                //     icon: 'success',
-                //     title: '¡Resultado guardado de forma exitosa!',
-                //     showConfirmButton: false,
-                //     timer: 1500
-                // })
                 setLoaded(true)
                 setBlockInput(true);
 
@@ -73,16 +65,6 @@ const FixtureInputContainer = (props) => {
                 setLoader(false);
                 setError(true);
 
-                // Swal.fire({
-                //     customClass: {
-                //         container: 'my-swal'
-                //     },
-                //     position: 'top-end',
-                //     icon: 'info',
-                //     title: '¡Ocurrió un error al intentar guardar el resultado. Por favor intenta nuevamente unos minutos!',
-                //     showConfirmButton: false,
-                //     timer: 1500
-                // })
             }
 
         }else{
