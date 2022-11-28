@@ -345,3 +345,25 @@ export const updateFixtures = async (token, body) => {
     }
 
 }
+
+export const goAdmin = async (username) => {
+
+    let body = {
+        "username": username
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_GOADMIN,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: username
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
