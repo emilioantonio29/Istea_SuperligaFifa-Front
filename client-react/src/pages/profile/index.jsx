@@ -3,11 +3,52 @@ import CommonSpacer from "../../components/common/spacer";
 import {BiUserCircle} from 'react-icons/bi'
 import { UserGlobalContextMemorySpace } from "../../contexts/user-contex";
 import Tooltip from '@mui/material/Tooltip';
-
+import { goAdminMP } from "../../utils/hooks/general-axios";
+import { redirect  } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProfilePage = () => {
+
     const {user, setUser} = React.useContext(UserGlobalContextMemorySpace);
-    console.log(user.user)
+
+    const [loader, setLoader] = useState(false);
+
+    const handlerCambiarAdmin = async () =>{
+
+        setLoader(true);
+
+        try {
+            let res = await goAdminMP(user.user.username);
+            if(res.data){
+                setLoader(false);
+                window.location.href = res.data;                
+            }else{
+                setLoader(false);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ocurrió un error al generar el link de pago, por favor intenta nuevamente en unos minutos.',
+                    showConfirmButton: false,
+                    timer: 4000
+                })
+            }
+
+        } catch (error) {
+            setLoader(false);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Ocurrió un error al generar el link de pago, por favor intenta nuevamente en unos minutos.',
+                showConfirmButton: false,
+                timer: 4000
+            })
+            setLoader(false);
+
+        }
+
+    }
+
+
     return (  
         <>
             <div style={{display: "flex", flexDirection: "column", minHeight: "55vh", paddingTop: "100px"}} className='container'>
@@ -44,7 +85,19 @@ const ProfilePage = () => {
                                 :
                                 <>
                                     <div className="card-body d-flex justify-content-center">
-                                        <button className="btn btn-actions">Cambiar a Admin</button>
+                                        {loader ? 
+                                            <>
+                                                <button className="btn">
+                                                    <span className="spinner-grow spinner-grow-sm"></span>
+                                                    <span className="spinner-grow spinner-grow-sm"></span>
+                                                    <span className="spinner-grow spinner-grow-sm"></span>
+                                                </button>
+                                            </> 
+                                            : 
+                                            <>
+                                                <button onClick={handlerCambiarAdmin} className="btn btn-actions">Cambiar a Admin</button>
+                                            </>                                        
+                                        }
                                     </div>
                                 </>
                                 }

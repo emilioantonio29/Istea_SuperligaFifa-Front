@@ -359,7 +359,51 @@ export const goAdmin = async (username) => {
             headers:{
                 "Content-Type": "application/json"
             },
-            data: username
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
+
+export const getTable = async (username) => {
+
+    let body = {
+        "username": username
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_GETTABLE,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: body
+        })
+        return data
+    } catch (err) {
+        return err;
+    }
+
+}
+
+export const goAdminMP = async (username) => {
+
+    let body = {
+        "email": username
+    }
+
+    try {
+        const data = await axios({
+            method: "POST",
+            url: environment+process.env.REACT_APP_API_ENDPOINT_GOADMINMP,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data: body
         })
         return data
     } catch (err) {
