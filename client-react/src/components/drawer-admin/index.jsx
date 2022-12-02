@@ -22,6 +22,8 @@ import Swal from 'sweetalert2';
 import { Link, useNavigate } from "react-router-dom";
 import TournamentDetailComponent from '../drawer-tournamentdetail';
 import Collapse from "@mui/material/Collapse";
+import FixturesDetailComponent from '../drawer-fixturesdetail';
+import ResultsDetailComponent from '../drawer-tournamentresults';
 
 
 
@@ -31,7 +33,7 @@ export default function DrawerAdminComponent(props) {
 
   const [showJugadores, setShowJugadores] = React.useState(false);
   const [loader, setLoader] = React.useState(false);
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -210,6 +212,12 @@ export default function DrawerAdminComponent(props) {
                             <button onClick={toggleDrawer(anchor, false)} className="btn btn-cardtournament">VOLVER</button>
                           </div>
                         </Collapse>
+
+                        <FixturesDetailComponent data={props.data} />
+
+                        <CommonSpacer marginTop={"40px"}/>
+
+                        <ResultsDetailComponent data={props.data}/>
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

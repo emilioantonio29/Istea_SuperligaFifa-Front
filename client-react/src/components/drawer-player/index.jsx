@@ -30,6 +30,8 @@ import ResultsDetailComponent from '../drawer-tournamentresults';
 
 export default function DrawerPlayerComponent(props) {
 
+  console.log("DATA", props.data)
+
   const navigate = useNavigate();
 
   const [showJugadores, setShowJugadores] = React.useState(false);
