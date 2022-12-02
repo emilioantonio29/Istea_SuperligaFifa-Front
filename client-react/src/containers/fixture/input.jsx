@@ -28,6 +28,11 @@ const FixtureInputContainer = (props) => {
     const [loaded, setLoaded] = React.useState(false);
 
     const handleUpdateFixture = async (data) =>{
+        console.log(props.local.jugador)
+        console.log(props.visitante.jugador)
+
+        console.log(user.user.username)
+
         // console.log(props)
         if(localResult && visitanteResult){
             setError(false)
@@ -204,12 +209,36 @@ const FixtureInputContainer = (props) => {
                             {loaded ? <><BiCheckDouble size='30px' style={{color: "green"}}/></> : <></>}
                         </>
                         : 
-                        <>
-                            <Tooltip title={updateButtonMSG}>
-                                <div className="d-flex justify-content-center" style={{marginLeft: error ? "25px" : "0px"}}>
-                                    <button onMouseEnter={handleMSG} onClick={handleUpdateFixture} className="btn btn-actions">GUARDAR RESULTADO</button>
-                                </div> 
-                            </Tooltip>
+                        <>  
+                            {props.admin ? 
+                            <>
+                                <Tooltip title={updateButtonMSG}>
+                                    <div className="d-flex justify-content-center" style={{marginLeft: error ? "25px" : "0px"}}>
+                                        <button onMouseEnter={handleMSG} onClick={handleUpdateFixture} className="btn btn-actions">GUARDAR RESULTADO</button>
+                                    </div> 
+                                </Tooltip>
+                            </> 
+                            : 
+                            <>
+                                {(props.local.jugador == user.user.username || props.visitante.jugador == user.user.username) ? 
+                                    <>
+                                        <Tooltip title={updateButtonMSG}>
+                                            <div className="d-flex justify-content-center" style={{marginLeft: error ? "25px" : "0px"}}>
+                                                <button onMouseEnter={handleMSG} onClick={handleUpdateFixture} className="btn btn-actions">GUARDAR RESULTADO</button>
+                                            </div> 
+                                        </Tooltip>
+                                    </>
+                                    :
+                                    <>
+                                        <Tooltip title="Solo puedes cargar resultados en tus fechas.">
+                                            <div className="d-flex justify-content-center" style={{marginLeft: loaded ? "25px": "0px"}}>
+                                                <button disabled className="btn btn-actions">GUARDAR RESULTADO</button>
+                                            </div>              
+                                        </Tooltip>                            
+                                    </>
+                                }
+                            </>
+                            }
                             {error ? <> <BiMessageAltError size='30px' style={{color: "red"}}/> contact admin </> : <></>}
                         </>
                         }

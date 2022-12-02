@@ -74,7 +74,7 @@ const FixturesDetailComponent = (props) => {
                                     <div key={index}>
                                         <CommonSpacer marginTop={"20px"}/>
 
-                                        <FixtureContainer fixture={data} fixtureId={fixtures._id} index={index}/>
+                                        <FixtureContainer fixture={data} fixtureId={fixtures._id} index={index} admin={props.admin}/>
 
                                         {/* {["0", "1"].map((data, index)=>{
                                             console.log("DATA", data)

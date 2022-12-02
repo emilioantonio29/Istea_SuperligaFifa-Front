@@ -213,7 +213,7 @@ export default function DrawerAdminComponent(props) {
                           </div>
                         </Collapse>
 
-                        <FixturesDetailComponent data={props.data} />
+                        <FixturesDetailComponent data={props.data} admin={true}/>
 
                         <CommonSpacer marginTop={"40px"}/>
 
