@@ -212,12 +212,19 @@ export default function DrawerAdminComponent(props) {
                             <button onClick={toggleDrawer(anchor, false)} className="btn btn-cardtournament">VOLVER</button>
                           </div>
                         </Collapse>
+                        
+                        {props.data.jugadores.length == props.data.cantidadjugadores && props.data.cerrado == false && props.data.torneoid !== ""? 
+                          <>
+                            <FixturesDetailComponent data={props.data} admin={true}/>
 
-                        <FixturesDetailComponent data={props.data} admin={true}/>
+                            <CommonSpacer marginTop={"40px"}/>
 
-                        <CommonSpacer marginTop={"40px"}/>
-
-                        <ResultsDetailComponent data={props.data}/>
+                            <ResultsDetailComponent data={props.data}/>
+                          </>
+                          :
+                          <>
+                          </>
+                        }
                     </div>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
