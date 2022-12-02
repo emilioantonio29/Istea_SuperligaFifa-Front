@@ -11,6 +11,8 @@ const ProfilePage = () => {
 
     const {user, setUser} = React.useContext(UserGlobalContextMemorySpace);
 
+    // console.log("PERFIL", user.user)
+
     const [loader, setLoader] = useState(false);
 
     const handlerCambiarAdmin = async () =>{
@@ -18,7 +20,7 @@ const ProfilePage = () => {
         setLoader(true);
 
         try {
-            let res = await goAdminMP(user.user.username);
+            let res = await goAdminMP(user.user.username, user.user._id);
             if(res.data){
                 setLoader(false);
                 window.location.href = res.data;                

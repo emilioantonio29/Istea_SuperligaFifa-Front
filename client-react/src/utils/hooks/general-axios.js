@@ -390,10 +390,11 @@ export const getTable = async (id) => {
 
 }
 
-export const goAdminMP = async (username) => {
+export const goAdminMP = async (username, id) => {
 
     let body = {
-        "email": username
+        "email": username,
+        "id": id
     }
 
     try {
