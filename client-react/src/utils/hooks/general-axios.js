@@ -368,10 +368,10 @@ export const goAdmin = async (username) => {
 
 }
 
-export const getTable = async (username) => {
+export const getTable = async (id) => {
 
     let body = {
-        "username": username
+        "idTorneo": id
     }
 
     try {
